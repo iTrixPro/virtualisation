@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql-deployment
-  namespace: authentications
+  name: mysql
+  namespace: authentication
 spec:
   replicas: 1
   selector:
@@ -13,35 +13,19 @@ spec:
       labels:
         app: mysql
     spec:
-      initContainers:
-      - name: init-mysql
-        image: mysql:latest
-        command: ["sh", "-c", "mysql -h mysql-service -u root -p$MYSQL_ROOT_PASSWORD $MYSQL_DB < database.sql"]
-        volumeMounts:
-      - name: init-script
-        mountPath: database.sql
-      env:
-      - name: MYSQL_ROOT_PASSWORD
-          value: root
-      - name: MYSQL_DB
-          value: virtualisation
-      - name: MYSQL_USER
-          value: root
       containers:
-      - name: mysql
-        image: mysql:latest
-        env:
-          - name: MYSQL_ROOT_PASSWORD
-            value: root
-          - name: MYSQL_DB
-            value: virtualisation
-          - name: MYSQL_USER
-            value: root
-        ports:
-        - containerPort: 3306
-        volumeMounts:
-          - name: mysql-storage
-            mountPath: /var/lib/mysql
+        - name: mysql
+          image: mysql:latest
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: MYSQL_DATABASE
+              value: virtualisation
+          volumeMounts:
+            - name: mysql-storage
+              mountPath: /var/lib/mysql
       volumes:
         - name: mysql-storage
           persistentVolumeClaim:

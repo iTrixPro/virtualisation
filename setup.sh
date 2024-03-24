@@ -1,11 +1,12 @@
 # set namespace
-./namespace-setup.sh
-
-# setup the database
-./database-setup.sh
+./tools/namespace-setup.sh
 
 # take care of the app
-./app-setup.sh
+./tools/app-setup.sh
 
 # put in place the gateway
-./gateway.sh
+./tools/gateway.sh
+
+# setup the database
+./tools/database-setup.sh
+

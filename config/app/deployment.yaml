@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: app
-        image: itrixpro/app:0.0.0.1.RELEASE
+        image: itrixpro/app:0.0.2.RELEASE
         ports:
         - containerPort: 5000 
