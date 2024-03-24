@@ -75,7 +75,7 @@ Before you begin, make sure you have the following technologies installed on you
 Firstly, you have to clone our repo :
 ```sh
 git clone "https://github.com/iTrixPro/virtualisation"
-cd /virtualisation
+cd virtualisation/
 ```
 
 Secondly, you will pull our docker image from the hub : 
