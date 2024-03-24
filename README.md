@@ -112,6 +112,7 @@ Enter password: root
 
 5. Create the table User
 ```sh
+use virtualisation;
 CREATE TABLE USERS( 
     -> id INT AUTO_INCREMENT PRIMARY KEY,
     -> username TEXT,
